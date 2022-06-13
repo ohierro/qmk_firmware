@@ -50,3 +50,7 @@
 #ifdef RGB_DI_PIN
     #define RGB_MATRIX_KEYPRESSES // reacts to keypresses
 #endif
+
+// #define RGBLIGHT_LAYERS
+
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD

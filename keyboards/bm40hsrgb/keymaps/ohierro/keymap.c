@@ -48,21 +48,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
+ * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   7  |   8  |   9  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  |   |
+ * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   4  |   5  |   6  |  |   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | |   [  |   ]  |  |   |
+ * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |   1  |   2  |   3  |  |   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Home | Pg Dn| Pg Up| End  |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_mit(
-    KC_TILD, KC_EXLM, KC_AT,   ES_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    ES_LPRN, ES_RPRN, KC_DEL,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    ES_LCBR, ES_RCBR, ES_ACUT,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), ES_LBRC, ES_RBRC,  ES_PIPE,
-    _______, _______, _______, _______, _______, _______, _______,    KC_HOME,    KC_PGDN, KC_PGUP, KC_END
+    ES_TILD, KC_EXLM, KC_AT,   ES_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_7,       KC_8,    KC_9,       KC_DEL,
+    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_4,       KC_5,    KC_6,       ES_PIPE,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), KC_1,       KC_2,    KC_3,       KC_0,
+    _______, _______, _______, _______, _______,          _______, _______,    KC_HOME,    KC_PGDN, KC_PGUP,    KC_END
 ),
+// [_LOWER] = LAYOUT_planck_mit(
+//     KC_TILD, KC_EXLM, KC_AT,   ES_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    ES_LPRN, ES_RPRN, KC_DEL,
+//     KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    ES_LCBR, ES_RCBR, ES_ACUT,
+//     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), ES_LBRC, ES_RBRC,  ES_PIPE,
+//     _______, _______, _______, _______, _______, _______, _______,    KC_HOME,    KC_PGDN, KC_PGUP, KC_END
+// ),
+
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
@@ -76,10 +83,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_mit(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_7,    KC_8,    KC_9, KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_4,    KC_5,    KC_6, KC_BSLS,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_1,    KC_2,    KC_3, _______,
-    _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_0,    KC_VOLU, KC_MPLY
+    KC_GRV,  ES_PIPE, ES_AT,   ES_GRV,  KC_4,    KC_5,    KC_6,    KC_7,    ES_PLUS, ES_LPRN,   ES_RPRN,    KC_BSPC,
+    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, ES_ASTR, ES_LCBR,   ES_RCBR,    KC_BSLS,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  ES_NTIL, KC_NUHS, ES_EQL,  ES_LBRC,   ES_RBRC,    _______,
+    _______, _______, _______, _______, _______, _______,          _______, ES_LABK, ES_RABK,   KC_VOLU,    KC_MPLY
 ),
 
 /* Adjust (Lower + Raise)
@@ -125,6 +132,15 @@ void rgb_matrix_indicators_user(void) {
     }
 }
 // #endif
+
+void caps_word_set_user(bool active) {
+    if (active) {
+        // Do something when Caps Word activates.
+        // rgblight_setrgb (0x00,  0x00, 0xFF);
+    } else {
+        // Do something when Caps Word deactivates.
+    }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
